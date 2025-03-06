@@ -78,17 +78,16 @@ class MyHomePage extends StatelessWidget {
             ],
           ),
 
-          // Barra inferior con 4 botones de diferentes colores y cuadrados
+          // Barra inferior con 3 botones
           Container(
             padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
             color: Colors.grey[200],
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                _buildSquareButton(Colors.blue),
-                _buildSquareButton(Colors.red),
-                _buildSquareButton(Colors.green),
-                _buildSquareButton(Colors.orange),
+                _buildSquareButton("Primero", Colors.blue),
+                _buildSquareButton("Segundo", Colors.purple),
+                _buildSquareButton("Tercero", Colors.green),
               ],
             ),
           ),
@@ -109,8 +108,8 @@ class MyHomePage extends StatelessWidget {
     );
   }
 
-  // Botón cuadrado con una figura cuadrada en el centro
-  Widget _buildSquareButton(Color color) {
+  // Botón cuadrado con texto y un cuadro blanco más pequeño
+  Widget _buildSquareButton(String text, Color color) {
     return ElevatedButton(
       onPressed: () {},
       style: ElevatedButton.styleFrom(
@@ -120,14 +119,24 @@ class MyHomePage extends StatelessWidget {
         ),
         padding: const EdgeInsets.all(20),
       ),
-      child: Container(
-        width: 20,
-        height: 20,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius:
-              BorderRadius.circular(4), // Figura cuadrada en el centro
-        ),
+      child: Column(
+        children: [
+          Text(text,
+              style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold)),
+          const SizedBox(height: 5),
+          Container(
+            width: 15,
+            height: 15,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius:
+                  BorderRadius.circular(4), // Cuadro blanco más pequeño
+            ),
+          ),
+        ],
       ),
     );
   }
